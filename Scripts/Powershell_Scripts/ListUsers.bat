@@ -1,3 +1,3 @@
 @echo off
-Get-LocalUser
-pause
+powershell -Command "Get-LocalUser "
+Pause
