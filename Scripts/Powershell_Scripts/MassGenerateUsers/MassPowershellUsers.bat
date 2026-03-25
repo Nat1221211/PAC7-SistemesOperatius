@@ -1,7 +1,3 @@
 @echo off
 
-$Users = Import-Csv -Path "./Users.csv"
-
-foreach ($user in $Users) {
-     powershell -Command "$Password = $user.pass New-LocalUser -Name $user.name -Password $Password (ConvertTo-SecureString -String $Password -AsPlainText -Force)"
-}
+powershell -ExecutionPolicy Bypass -Command "Import-Csv 'Users.csv' | ForEachObject {New-LocalUser -Name $_.Name -Password (ConvertTo-SecureString $_.pass -AsPlainText -Force) -Description "CSv User"}"
